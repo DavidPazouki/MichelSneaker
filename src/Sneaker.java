@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 
 public class Sneaker extends JPanel {
     public static WebDriver driver = null;
-    public static String url = "";
+    public static String url;
 
     public Sneaker(){
 
@@ -43,6 +43,34 @@ public class Sneaker extends JPanel {
                 int messageType = JOptionPane.PLAIN_MESSAGE;
 
                 JOptionPane.showMessageDialog(null, getTxt, "Michel Sneaker App", messageType);
+
+
+                //michel Code
+            }
+        });
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if(url != "") {
+                    //michel code
+                    //System.setProperty("webdriver.chrome.driver", "\\driver\\chromedriver_75.exe");
+                    System.setProperty("webdriver.chrome.driver", "\\driver\\chromedriver_75.exe");
+
+                    driver = new ChromeDriver();
+                    driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+                    driver.navigate().to(url);
+                    driver.manage().window();
+                    String title = driver.getTitle();
+
+                    driver.findElement(By.id("417")).click();
+                    driver.findElement(By.id("addtocart_button")).click();
+
+                    driver.findElement(By.className("btn-cart")).click();
+                    driver.findElement(By.className("btn-proceed-checkout")).click();
+
+                    System.out.print(title);
+                }
             }
         });
 
@@ -57,24 +85,5 @@ public class Sneaker extends JPanel {
         frame1.setSize(310, 130);
         frame1.setVisible(true);
 
-
-        //michel code
-        //System.setProperty("webdriver.chrome.driver", "\\driver\\chromedriver_75.exe");
-        System.setProperty("webdriver.chrome.driver", "\\driver\\chromedriver_75.exe");
-
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-        driver.navigate().to(url);
-        driver.manage().window();
-        String title = driver.getTitle();
-
-        driver.findElement(By.id("417")).click();
-        driver.findElement(By.id("addtocart_button")).click();
-
-        driver.findElement(By.className("btn-cart")).click();
-        driver.findElement(By.className("btn-proceed-checkout")).click();
-
-        System.out.print(title);
     }
-
 }
