@@ -15,17 +15,53 @@ import javax.swing.JOptionPane;
 public class Sneaker extends JPanel {
     public static WebDriver driver = null;
     public static String url;
+    public static String firstName;
+    public static String lastName;
+    public static String cardNumber;
+    public static String my;
+    public static String cvc;
+    public static String address;
+    public static String size;
 
-    public Sneaker(){
+    public Sneaker() {
 
-        final JTextField txt = new JTextField("");
-        txt.setBounds(1, 1, 300, 30);
+        final JTextField txt1 = new JTextField("url");
+        txt1.setBounds(1, 1, 300, 30);
+
+        final JTextField txt2 = new JTextField("FirstName");
+        txt2.setBounds(1, 40, 300, 30);
+
+        final JTextField txt3 = new JTextField("LastName");
+        txt3.setBounds(1, 80, 300, 30);
+
+        final JTextField txt4 = new JTextField("CardNumber");
+        txt4.setBounds(1, 120, 300, 30);
+
+        final JTextField txt5 = new JTextField("Month/Year");
+        txt5.setBounds(1, 160, 300, 30);
+
+        final JTextField txt6 = new JTextField("CVC");
+        txt6.setBounds(1, 200, 300, 30);
+
+        final JTextField txt7 = new JTextField("Address");
+        txt7.setBounds(1, 240, 300, 30);
+
+        final JTextField txt8 = new JTextField("Size");
+        txt8.setBounds(1, 280, 300, 30);
+
 
         JButton button = new JButton(" >> CLICK ME <<");
-        button.setBounds(40, 40, 200, 40);
+        button.setBounds(40, 400, 200, 40);
 
         setLayout(null);
-        add(txt);
+        add(txt1);
+        add(txt2);
+        add(txt3);
+        add(txt4);
+        add(txt5);
+        add(txt6);
+        add(txt7);
+        add(txt8);
         add(button);
 
         // Add action listener to button[/B]
@@ -35,14 +71,22 @@ public class Sneaker extends JPanel {
                 // Execute when button is pressed
                 //System.out.println("You clicked the button");
 
-                String getTxt = txt.getText();
-                url = getTxt;
+                url = txt1.getText();
+                firstName = txt2.getText();
+                lastName = txt3.getText();
+                cardNumber = txt4.getText();
+                my = txt5.getText();
+                cvc = txt6.getText();
+                address = txt7.getText();
+                size = txt8.getText();
+
+
                 System.out.println(url);
-                System.out.println(getTxt);
+                System.out.println(url);
 
                 int messageType = JOptionPane.PLAIN_MESSAGE;
 
-                JOptionPane.showMessageDialog(null, getTxt, "Michel Sneaker App", messageType);
+                JOptionPane.showMessageDialog(null, url, "Michel Sneaker App", messageType);
 
 
                 //michel Code
@@ -52,7 +96,7 @@ public class Sneaker extends JPanel {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if(url != "") {
+                if (url != "") {
                     //michel code
                     //System.setProperty("webdriver.chrome.driver", "\\driver\\chromedriver_75.exe");
                     System.setProperty("webdriver.chrome.driver", "\\driver\\chromedriver_75.exe");
